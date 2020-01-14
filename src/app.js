@@ -5,7 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
     el: "#app",
     data: {
       currencies: null,
-      selectedCurrency: null
+      selectedCurrency: null,
+      input: null
     },
     mounted(){
       this.currencyFetch()
@@ -16,7 +17,10 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(req => req.json())
         .then(data => this.currencies = data.rates)
         this.currencies = null;
-    }
+      },
+      currencyCalculation: function(input, currency){
+       return input * currency
+      }
   }
   });
 });

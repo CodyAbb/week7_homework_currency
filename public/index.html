@@ -14,12 +14,15 @@
     <h1>Currency Converter</h1>
 
     <form>
-      <input type="number" name="" value="">
+      <input v-model="input" type="number">
       <select v-model="selectedCurrency">
         <option v-for="(currency, key) in currencies" v-bind:value="currency">{{key}}</option>
       </select>
-      in
     </form>
+
+    <h2>Your selected rate is {{selectedCurrency}}</h2>
+    <h2>Converted amount: {{currencyCalculation(input, selectedCurrency)}}</h2>
+
   </div>
 </body>
 </html>
