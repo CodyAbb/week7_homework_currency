@@ -6,7 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
     data: {
       currencies: null,
       selectedCurrency: null,
-      input: null
+      euroInput: null,
+      otherCurrencyInput: null
     },
     mounted(){
       this.currencyFetch()
@@ -18,9 +19,14 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(data => this.currencies = data.rates)
         this.currencies = null;
       },
-      currencyCalculation: function(input, currency){
-       return input * currency
-      }
+      currencyCalculation: function(euroInput, currency){
+       const result = euroInput * currency
+       return result.toFixed(2);
+     },
+     toEuroCalculation: function(otherCurrencyInput, currencyRate){
+       const result = otherCurrencyInput/currencyRate
+       return result.toFixed(2);
+     }
   }
   });
 });
